@@ -34,6 +34,10 @@ public class ADBUtil {
         ExecUtil.getInstance().exec(Config.adb + " shell input touchscreen tap " + x + " " + y);
     }
 
+    public static void slide(int x1, int y1, int x2, int y2) throws Exception {
+        ExecUtil.getInstance().exec(Config.adb + " shell input swipe " + x1 + " " + y1 + " " + x2 + " " + y2);
+    }
+
     public static void screenShot() throws Exception {
         ExecUtil.getInstance().exec(Config.adb + " shell screencap -p /data/data/screen.png");
         ExecUtil.getInstance().exec(Config.adb + " pull /data/data/screen.png " + Config.screenShotSavePath);
