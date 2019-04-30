@@ -3,34 +3,28 @@ package com.ikrka.common;
 /**
  * 配置类
  * 
- * @author
+ * @author zoain
  */
 public class Config {
 
-    public static String libPath = "/usr/local/Cellar/opencv/4.1.0_1/share/java/opencv4/libopencv_java410.dylib";
+    // OpenCV驱动地址
+    public static String libPath = "";
 
-    public static String screenShotSavePath = "/Users/lizhaofa/Downloads/screen.png";
+    // ADB截图保存路径(多个截图文件是为了避免多线程操作时文件占用的问题)
+    public static String screenShotSavePath = "";
 
-    public static String screenShotSavePath1 = "/Users/lizhaofa/Downloads/screen1.png";
+    // ADB截图保存路径1
+    public static String screenShotSavePath1 = "";
 
-    public static String screenShotSavePath2 = "/Users/lizhaofa/Downloads/screen2.png";
+    // ADB截图保存路径2
+    public static String screenShotSavePath2 = "";
 
-    public static String tempPath = "/Users/lizhaofa/Downloads/resources/temp/";
+    // 模板图路径(需要带最后一个斜杠)
+    public static String tempPath = "";
 
-    public static String adb = "/Users/lizhaofa/Library/Nemu/adb";
+    // adb命令路径
+    public static String adb = "";
 
     public final static String[] gauntletParam = { "一层", "二层", "三层", "四层", "五层", "六层", "七层", "八层", "九层", "十层" };
-
-    static {
-
-        libPath = "/usr/local/Cellar/opencv/4.1.0_1/share/java/opencv4/libopencv_java410.dylib";
-
-        screenShotSavePath = "/Users/lizhaofa/Downloads/screen.png";
-
-        tempPath = "/Users/lizhaofa/Downloads/resources/temp/";
-
-        adb = "/Users/lizhaofa/Library/Nemu/adb";
-
-    }
 
 }
