@@ -43,6 +43,10 @@ public class ADBUtil {
         ExecUtil.getInstance().exec(Config.adb + " pull /data/data/screen.png " + Config.screenShotSavePath);
     }
 
+    public static void copyScreenShot(String path) throws Exception {
+        ExecUtil.getInstance().exec(Config.adb + " pull /data/data/screen.png " + path);
+    }
+
     public static String getADBIP() {
         return (String) param.get("ip");
     }

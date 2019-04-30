@@ -23,6 +23,7 @@
 hs_err_pid*
 
 # private config
+.DS_Store
 .classpath
 .project
 .settings/
