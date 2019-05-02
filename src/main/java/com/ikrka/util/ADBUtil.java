@@ -5,6 +5,8 @@ import java.util.Map;
 
 import com.ikrka.common.Config;
 
+import cn.hutool.core.thread.ThreadUtil;
+
 /**
  * ADB工具类
  * 
@@ -14,6 +16,14 @@ import com.ikrka.common.Config;
 public class ADBUtil {
 
     private final static Map<String, Object> param = new HashMap<>(2);
+
+    static {
+        try {
+            ExecUtil.getInstance().exec(Config.adb + " kill-server");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     private ADBUtil() {
     }

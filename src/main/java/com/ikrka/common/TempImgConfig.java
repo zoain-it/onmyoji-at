@@ -4,9 +4,8 @@ public class TempImgConfig {
 
     // 奖励
     public final static String[] REWARD = { Config.tempPath + "D46E730A-B314-407D-A9F5-A447EE883834.png",
-            Config.tempPath + "7CACD066-6721-482B-95B4-4CB558ADF7D5.png",
-            Config.tempPath + "4F132B7A-521D-4BF2-966F-B8AD3A0F17F2.png" };
-    public final static Integer[] REWARD_LIMIT = { 330, 340, 230, 240, 565, 575, 64, 74, -8, 2, 61, 71 };
+            Config.tempPath + "D771B1FB-8FA0-40FB-84EA-EF93818013D9.png" };
+    public final static Integer[] REWARD_LIMIT = { -516, -512, -454, -450 };
 
     // 准备
     public final static String[] PREPARE = { Config.tempPath + "2AD6310B-3A29-4D07-AFE6-FEFF13EE4D0D.png",
@@ -27,6 +26,11 @@ public class TempImgConfig {
 
     // 御魂挑战按钮
     public final static String[] GAUNTLET = { Config.tempPath + "557FABF5-7CD0-45E9-8164-FF02981A53E8.png" };
+
+    // 御魂组队按钮
+    public final static String[] RANKS = { Config.tempPath + "528E26E2-11FD-4457-9F8C-12D9F04463BD.png" };
+
+    public final static Integer[] GAUNTLET_LIMIT = { 298, 302, -1, 3 };
 
     // 探险按钮
     public final static String[] EXPLORE = { Config.tempPath + "7D3B7698-C5D9-4720-A699-3DE1B11C2B0C.png" };

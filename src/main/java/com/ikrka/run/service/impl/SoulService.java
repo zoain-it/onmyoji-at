@@ -16,7 +16,7 @@ import cn.hutool.core.thread.ThreadUtil;
  * 
  * @author zoain
  */
-public class SoulService implements BaseService, Runnable {
+public class SoulService extends Thread implements BaseService {
 
     private int tier;
 
@@ -37,7 +37,7 @@ public class SoulService implements BaseService, Runnable {
         getHandlerInstance().enterExplore().sleep(2000).enterSoul().sleep(1000).enterGossipSnake().sleep(1000)
                 .selectTier(tier).sleep(500);
         while (true) {
-            getHandlerInstance().enterGauntlet().sleep(2000).clickPrepare().sleep(35000).clickReward().sleep(3000);
+            getHandlerInstance().enterGauntlet().sleep(2000).clickPrepare().sleep(10000).clickReward();
         }
     }
 
@@ -73,17 +73,58 @@ public class SoulService implements BaseService, Runnable {
             return this;
         }
 
+        /**
+         * 点击挑战按钮
+         * 
+         * @return
+         */
         private Handler enterGauntlet() {
+            try {
+                long preSecond = System.currentTimeMillis();
+                Map<String, Integer> result1 = null;
+                while (true) {
+                    if (System.currentTimeMillis() - preSecond >= 10000) {
+                        break;
+                    }
+                    ADBUtil.screenShot();
+                    ADBUtil.copyScreenShot(Config.screenShotSavePath1);
+                    Future<Map<String, Integer>> future1, future2;
+                    future1 = ThreadUtil.execAsync(() -> getCoordinate(TempImgConfig.GAUNTLET[0]));
+                    future2 = ThreadUtil
+                            .execAsync(() -> getCoordinate(TempImgConfig.RANKS[0], Config.screenShotSavePath1));
+                    result1 = future1.get();
+                    Map<String, Integer> result2 = future2.get();
+                    int mvX = result1.get("x") - result2.get("x");
+                    int mvY = result1.get("y") - result2.get("y");
+                    if (TempImgConfig.GAUNTLET_LIMIT[0] <= mvX && mvX <= TempImgConfig.GAUNTLET_LIMIT[1]
+                            && TempImgConfig.GAUNTLET_LIMIT[2] <= mvY && mvY <= TempImgConfig.GAUNTLET_LIMIT[3]) {
+                        break;
+                    }
+                }
+                ADBUtil.click(result1.get("x"), result1.get("y"));
+            } catch (Exception e) {
+            }
             click(TempImgConfig.GAUNTLET[0]);
             return this;
         }
 
+        /**
+         * 选择层数
+         * 
+         * @param tier 层数
+         * @return
+         */
         private Handler selectTier(int tier) {
             adjustTier(tier);
             click(TempImgConfig.SOUL_COORDINATE[--tier]);
             return this;
         }
 
+        /**
+         * 当前层数区间调整到需点击的层数对应区间
+         * 
+         * @param tier 层数
+         */
         private void adjustTier(int tier) {
             try {
                 ADBUtil.screenShot();
@@ -100,68 +141,78 @@ public class SoulService implements BaseService, Runnable {
                 if (1 <= tier && tier <= 4) {
                     ADBUtil.slide(mvX1, y - 280, mvX2, mvY1);
                 }
+                sleep(250);
                 ADBUtil.click(x, y);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
+        /**
+         * 点击准备按钮
+         * 
+         * @return
+         */
         private Handler clickPrepare() {
             try {
+                long preSecond = System.currentTimeMillis();
+                Map<String, Integer> prepare1 = null;
                 while (true) {
+                    if (System.currentTimeMillis() - preSecond >= 15000) {
+                        break;
+                    }
                     ADBUtil.screenShot();
                     ADBUtil.copyScreenShot(Config.screenShotSavePath1);
-                    Future<Map<String, Integer>> future1 = ThreadUtil
-                            .execAsync(() -> getCoordinate(TempImgConfig.PREPARE[0]));
-                    Future<Map<String, Integer>> future2 = ThreadUtil
+                    Future<Map<String, Integer>> future1, future2;
+                    future1 = ThreadUtil.execAsync(() -> getCoordinate(TempImgConfig.PREPARE[0]));
+                    future2 = ThreadUtil
                             .execAsync(() -> getCoordinate(TempImgConfig.PREPARE[1], Config.screenShotSavePath1));
-                    Map<String, Integer> prepare1 = future1.get();
+                    prepare1 = future1.get();
                     Map<String, Integer> prepare2 = future2.get();
                     int xDiff = prepare2.get("x") - prepare1.get("x");
                     int yDiff = prepare2.get("y") - prepare1.get("y");
                     if (TempImgConfig.PREPARE_LIMIT[0] <= xDiff && xDiff <= TempImgConfig.PREPARE_LIMIT[1]
                             && TempImgConfig.PREPARE_LIMIT[2] <= yDiff && yDiff <= TempImgConfig.PREPARE_LIMIT[3]) {
-                        ADBUtil.click(prepare1.get("x"), prepare1.get("y"));
                         break;
                     }
                 }
+                ADBUtil.click(prepare1.get("x"), prepare1.get("y"));
             } catch (Exception e) {
                 e.printStackTrace();
             }
             return this;
         }
 
+        /**
+         * 奖励界面点击
+         * 
+         * @return
+         */
         private Handler clickReward() {
             try {
+                long preSecond = System.currentTimeMillis();
+                Map<String, Integer> reward1 = null;
                 while (true) {
+                    if (System.currentTimeMillis() - preSecond >= 60000) {
+                        break;
+                    }
                     ADBUtil.screenShot();
                     ADBUtil.copyScreenShot(Config.screenShotSavePath1);
-                    ADBUtil.copyScreenShot(Config.screenShotSavePath2);
-                    Future<Map<String, Integer>> future1 = ThreadUtil
-                            .execAsync(() -> getCoordinate(TempImgConfig.REWARD[0]));
-                    Future<Map<String, Integer>> future2 = ThreadUtil
+                    Future<Map<String, Integer>> future1, future2;
+                    future1 = ThreadUtil.execAsync(() -> getCoordinate(TempImgConfig.REWARD[0]));
+                    future2 = ThreadUtil
                             .execAsync(() -> getCoordinate(TempImgConfig.REWARD[1], Config.screenShotSavePath1));
-                    Future<Map<String, Integer>> future3 = ThreadUtil
-                            .execAsync(() -> getCoordinate(TempImgConfig.REWARD[2], Config.screenShotSavePath2));
-                    Map<String, Integer> reward1 = future1.get();
+                    reward1 = future1.get();
                     Map<String, Integer> reward2 = future2.get();
-                    Map<String, Integer> reward3 = future3.get();
                     int x1Diff = reward2.get("x") - reward1.get("x");
-                    int x2Diff = reward3.get("x") - reward2.get("x");
-                    int x3Diff = reward3.get("x") - reward1.get("x");
                     int y1Diff = reward2.get("y") - reward1.get("y");
-                    int y2Diff = reward3.get("y") - reward2.get("y");
-                    int y3Diff = reward3.get("y") - reward1.get("y");
                     if (TempImgConfig.REWARD_LIMIT[0] <= x1Diff && x1Diff <= TempImgConfig.REWARD_LIMIT[1]
-                            && TempImgConfig.REWARD_LIMIT[2] <= x2Diff && x2Diff <= TempImgConfig.REWARD_LIMIT[3]
-                            && TempImgConfig.REWARD_LIMIT[4] <= x3Diff && x3Diff <= TempImgConfig.REWARD_LIMIT[5]
-                            && TempImgConfig.REWARD_LIMIT[6] <= y1Diff && y1Diff <= TempImgConfig.REWARD_LIMIT[7]
-                            && TempImgConfig.REWARD_LIMIT[8] <= y2Diff && y2Diff <= TempImgConfig.REWARD_LIMIT[9]
-                            && TempImgConfig.REWARD_LIMIT[10] <= y3Diff && y3Diff <= TempImgConfig.REWARD_LIMIT[11]) {
-                        ADBUtil.click(reward1.get("x"), reward1.get("y"));
+                            && TempImgConfig.REWARD_LIMIT[2] <= y1Diff && y1Diff <= TempImgConfig.REWARD_LIMIT[3]) {
                         break;
                     }
                 }
+                sleep(500);
+                ADBUtil.click(reward1.get("x"), reward1.get("y"));
             } catch (Exception e) {
                 e.printStackTrace();
             }

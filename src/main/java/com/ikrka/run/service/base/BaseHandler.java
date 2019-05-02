@@ -26,23 +26,11 @@ public class BaseHandler {
     }
 
     protected Map<String, Integer> getCoordinate(String tempImg) {
-        try {
-            // 截图
-            ADBUtil.screenShot();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         // 匹配坐标并返回
         return ImgMatch.match(tempImg, Config.screenShotSavePath);
     }
 
     protected Map<String, Integer> getCoordinate(String tempImg, String tagetImg) {
-        /* try {
-            // 截图
-            ADBUtil.screenShot();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } */
         // 匹配坐标并返回
         return ImgMatch.match(tempImg, Config.screenShotSavePath);
     }

@@ -27,9 +27,6 @@
             <groupId>org.opencv</groupId>
             <artifactId>opencv</artifactId>
             <version>4.1.0</version>
-            <!-- 此处需自行修改jar路径 -->
-            <systemPath>opencv-410.jar</systemPath>
-            <scope>system</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -61,21 +58,43 @@
                 <plugin>
                     <artifactId>maven-jar-plugin</artifactId>
                     <version>3.0.2</version>
+                    <!-- <configuration>
+                        <source>11</source>
+                        <target>11</target>
+                        <archive>
+                            <manifest>
+                                <mainClass>com.ikrka.App</mainClass>
+                                <addClasspath>true</addClasspath>
+                                <classpathPrefix>lib/</classpathPrefix>
+                            </manifest>
+
+                        </archive>
+                        <classesDirectory>
+                        </classesDirectory>
+                    </configuration> -->
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
-                    <version>3.1.1</version>
                     <configuration>
+                        <appendAssemblyId>true</appendAssemblyId>
+                        <descriptorRefs>
+                            <descriptorRef>jar-with-dependencies</descriptorRef>
+                        </descriptorRefs>
                         <archive>
                             <manifest>
                                 <mainClass>com.ikrka.App</mainClass>
                             </manifest>
                         </archive>
-                        <descriptorRefs>
-                            <descriptorRef>jar-with-dependencies</descriptorRef>
-                        </descriptorRefs>
                     </configuration>
+                    <executions>
+                        <execution>
+                            <id>make-assembly</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>assembly</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <artifactId>maven-install-plugin</artifactId>
