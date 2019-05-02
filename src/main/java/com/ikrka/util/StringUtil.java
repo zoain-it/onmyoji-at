@@ -2,7 +2,7 @@ package com.ikrka.util;
 
 public class StringUtil {
 
-    public static int toInt(String str) {
+    public static int tierToInt(String str) {
         int result = 10;
         switch (str) {
         case "一层":
@@ -31,6 +31,24 @@ public class StringUtil {
             break;
         case "九层":
             result = 9;
+            break;
+        default:
+            break;
+        }
+        return result;
+    }
+
+    public static int wakeUpModelToInt(String str) {
+        int result = 0;
+        switch (str) {
+        case "风麒麟":
+            result = 1;
+            break;
+        case "水麒麟":
+            result = 2;
+            break;
+        case "雷麒麟":
+            result = 3;
             break;
         default:
             break;

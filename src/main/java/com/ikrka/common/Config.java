@@ -27,7 +27,9 @@ public class Config {
     // adb命令路径
     public static String adb = "";
 
-    public final static String[] gauntletParam = { "一层", "二层", "三层", "四层", "五层", "六层", "七层", "八层", "九层", "十层" };
+    public final static String[] GAUNTLET_PARAM = { "一层", "二层", "三层", "四层", "五层", "六层", "七层", "八层", "九层", "十层" };
+
+    public final static String[] MODEL_PARAM = { "火麒麟", "风麒麟", "水麒麟", "雷麒麟" };
 
     public static void init(String configPath) {
 

@@ -2,6 +2,15 @@ package com.ikrka.common;
 
 public class TempImgConfig {
 
+    // 觉醒模式
+    public final static String[] WAKE_UP_MODEL = { Config.tempPath + "16850085-10AC-4AC3-9F26-23142EAF41AD.png",
+            Config.tempPath + "81067C2D-E279-4AC8-B877-F016CAB94334.png",
+            Config.tempPath + "619A8D7D-AFC9-4228-ABEE-423BC386EAB6.png",
+            Config.tempPath + "DD9DC429-628D-4551-BFF7-4BE6B5202F2F.png" };
+
+    // 觉醒
+    public final static String[] WAKE_UP = { Config.tempPath + "1D252694-B9D8-4ED5-92BE-8C71808D0B5A.png" };
+
     // 奖励
     public final static String[] REWARD = { Config.tempPath + "D46E730A-B314-407D-A9F5-A447EE883834.png",
             Config.tempPath + "D771B1FB-8FA0-40FB-84EA-EF93818013D9.png" };

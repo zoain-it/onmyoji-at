@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 
 import com.ikrka.common.Config;
 import com.ikrka.run.service.impl.SoulService;
+import com.ikrka.run.service.impl.WakeUpService;
 import com.ikrka.util.ADBUtil;
 import com.ikrka.util.StringUtil;
 
@@ -81,16 +82,27 @@ public class IndexUi {
             String command = e.getActionCommand();
             if (command.equals("gauntlet")) {
                 String tier = (String) JOptionPane.showInputDialog(null, "请选择层数:\n", "层数", JOptionPane.QUESTION_MESSAGE,
-                        null, Config.gauntletParam, Config.gauntletParam[0]);
+                        null, Config.GAUNTLET_PARAM, Config.GAUNTLET_PARAM[0]);
                 if (tier != null && !"".equals(tier)) {
                     statusLabel.setText("runing gauntlet.");
-                    SoulService soulService = new SoulService(StringUtil.toInt(tier));
+                    SoulService soulService = new SoulService(StringUtil.tierToInt(tier));
                     soulService.setName("soulService");
                     soulService.setDaemon(true);
                     ThreadUtil.execute(soulService);
                 }
             } else if (command.equals("wakeUp")) {
-                statusLabel.setText("wakeUp Button clicked.");
+                String model = (String) JOptionPane.showInputDialog(null, "请选择模式:\n", "模式",
+                        JOptionPane.QUESTION_MESSAGE, null, Config.MODEL_PARAM, Config.MODEL_PARAM[0]);
+                String tier = (String) JOptionPane.showInputDialog(null, "请选择层数:\n", "层数", JOptionPane.QUESTION_MESSAGE,
+                        null, Config.GAUNTLET_PARAM, Config.GAUNTLET_PARAM[0]);
+                if (model != null && !"".equals(model) && tier != null && !"".equals(tier)) {
+                    statusLabel.setText("runing wakeUp.");
+                    WakeUpService wakeUpService = new WakeUpService(StringUtil.wakeUpModelToInt(model),
+                            StringUtil.tierToInt(tier));
+                    wakeUpService.setName("wakeUpService");
+                    wakeUpService.setDaemon(true);
+                    ThreadUtil.execute(wakeUpService);
+                }
             } else if (command.equals("break")) {
                 statusLabel.setText("break Button clicked.");
             } else if (command.equals("screenShot")) {
@@ -101,7 +113,8 @@ public class IndexUi {
                 }
                 statusLabel.setText("screenShot Button clicked.");
             } else if (command.equals("test")) {
-
+                WakeUpService wakeUpService = new WakeUpService(0, 6);
+                ThreadUtil.execute(wakeUpService);
                 statusLabel.setText("test Button clicked.");
             }
         }
