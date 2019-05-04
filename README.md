@@ -31,7 +31,7 @@
     screenShotSavePath2
 
     // 模板图路径(需要带最后一个斜杠, 代码可以判断, 但是我不想)
-    tempPat
+    tempPath
 
     // adb命令路径
     adb
