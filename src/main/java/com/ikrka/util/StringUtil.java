@@ -3,10 +3,9 @@ package com.ikrka.util;
 public class StringUtil {
 
     public static int tierToInt(String str) {
-        int result = 10;
+        int result = 1;
         switch (str) {
         case "一层":
-            result = 1;
             break;
         case "二层":
             result = 2;
@@ -31,6 +30,12 @@ public class StringUtil {
             break;
         case "九层":
             result = 9;
+            break;
+        case "十层":
+            result = 10;
+            break;
+        case "悲鸣":
+            result = 11;
             break;
         default:
             break;
