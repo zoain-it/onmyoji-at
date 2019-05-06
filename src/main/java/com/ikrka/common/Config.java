@@ -34,16 +34,17 @@ public class Config {
     public static void init(String configPath) {
 
         PropertiesUtil.init(configPath);
-        String temp = null;
+        var temp = PropertiesUtil.getByKey("screenShotSavePath");
 
-        temp = PropertiesUtil.getByKey("screenShotSavePath");
         if (temp != null && !"".equals(temp)) {
             screenShotSavePath = temp;
         }
+
         temp = PropertiesUtil.getByKey("screenShotSavePath1");
         if (temp != null && !"".equals(temp)) {
             screenShotSavePath1 = temp;
         }
+
         temp = PropertiesUtil.getByKey("screenShotSavePath2");
         if (temp != null && !"".equals(temp)) {
             screenShotSavePath2 = temp;

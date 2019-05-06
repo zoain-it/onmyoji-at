@@ -1,21 +1,17 @@
 package com.ikrka.common;
 
 /**
- * 驱动加载
+ * 加载驱动
  * 
  * @author zoain
  */
 public class LibLoad {
 
-    private final static String osName = System.getProperty("os.name");
-
     public static void load() {
-        if ("Mac OS X".endsWith(osName)) {
+        try {
             System.load(Config.libPath);
-        } else if ("".endsWith(osName)) {
-            System.load(Config.libPath);
-        } else {
-            throw new RuntimeException("load lib error");
+        } catch (Exception e) {
+            throw new RuntimeException("load lib error", e);
         }
     }
 
