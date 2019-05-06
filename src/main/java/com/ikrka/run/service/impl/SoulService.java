@@ -30,6 +30,7 @@ public class SoulService extends Thread implements BaseService {
         getHandlerInstance().enterExplore().sleep(2000).enterSoul().sleep(1000).enterGossipSnake().sleep(1000)
                 .selectTier(tier).sleep(500);
         while (true) {
+            // 621 175
             getHandlerInstance().enterGauntlet().sleep(2000).clickPrepare().sleep(10000).clickReward();
         }
     }

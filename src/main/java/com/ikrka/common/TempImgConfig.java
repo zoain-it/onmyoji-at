@@ -38,13 +38,12 @@ public class TempImgConfig {
 
     // 御魂组队按钮
     public final static String[] RANKS = { Config.tempPath + "528E26E2-11FD-4457-9F8C-12D9F04463BD.png" };
-
     public final static Integer[] GAUNTLET_LIMIT = { 298, 302, -1, 3 };
 
     // 探险按钮
     public final static String[] EXPLORE = { Config.tempPath + "7D3B7698-C5D9-4720-A699-3DE1B11C2B0C.png" };
 
-    // 御魂十层按钮
+    // 御魂层级按钮
     public final static String[] SOUL_COORDINATE = { Config.tempPath + "D0048FE3-0FCD-47F5-8E15-6840156D29A5.png",
             Config.tempPath + "FE6990B3-633A-4611-BC9C-309CF5DDAF5E.png",
             Config.tempPath + "AEA1BCB4-1BF2-4453-86B4-F7D73E5C2920.png",
@@ -54,7 +53,8 @@ public class TempImgConfig {
             Config.tempPath + "F901D7B1-EFD0-4117-9C0D-F1555714DBE6.png",
             Config.tempPath + "11437FAD-3EB0-4813-BED3-F890C992D73A.png",
             Config.tempPath + "A5A16C55-BCB4-46D6-9381-95772DDFBAF1.png",
-            Config.tempPath + "664EE3DE-152A-4AFA-A5BA-A9C9904A48C4.png" };
+            Config.tempPath + "664EE3DE-152A-4AFA-A5BA-A9C9904A48C4.png",
+            Config.tempPath + "1AE925A8-6808-45F8-8E52-F118697F1D72.png" };
 
     public final static String[] ONE = { Config.tempPath + "D0048FE3-0FCD-47F5-8E15-6840156D29A5.png" };
     public final static String[] TWO = { Config.tempPath + "FE6990B3-633A-4611-BC9C-309CF5DDAF5E.png" };
@@ -65,5 +65,6 @@ public class TempImgConfig {
     public final static String[] EIGHT = { Config.tempPath + "11437FAD-3EB0-4813-BED3-F890C992D73A.png" };
     public final static String[] NINE = { Config.tempPath + "A5A16C55-BCB4-46D6-9381-95772DDFBAF1.png" };
     public final static String[] TEN = { Config.tempPath + "664EE3DE-152A-4AFA-A5BA-A9C9904A48C4.png" };
+    public final static String[] GRIEF_CALL = { Config.tempPath + "1AE925A8-6808-45F8-8E52-F118697F1D72.png" };
 
 }
