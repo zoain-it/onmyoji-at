@@ -34,9 +34,11 @@ public class BaseHandler<T extends BaseHandler<T>> {
      * @param tier 层数
      * @return
      */
-    public T selectTier(int tier) {
-        adjustTier(tier);
-        click(TempImgConfig.SOUL_COORDINATE[--tier]);
+    public T selectTier(int tier, int model) {
+        if (model == 1) {
+            adjustTier(tier);
+        }
+        click(model == 1 ? TempImgConfig.SOUL_COORDINATE[--tier] : TempImgConfig.FIRE_MODEL[--tier]);
         return (T) this;
     }
 
@@ -73,7 +75,7 @@ public class BaseHandler<T extends BaseHandler<T>> {
      * 
      * @return
      */
-    public T enterGauntlet() {
+    public T enterGauntlet(int model) {
         try {
             var preSecond = System.currentTimeMillis();
             Map<String, Integer> result1 = null;
@@ -87,6 +89,9 @@ public class BaseHandler<T extends BaseHandler<T>> {
                 future1 = ThreadUtil.execAsync(() -> getCoordinate(TempImgConfig.GAUNTLET[0]));
                 future2 = ThreadUtil.execAsync(() -> getCoordinate(TempImgConfig.RANKS[0], Config.screenShotSavePath1));
                 result1 = future1.get();
+                if (model != 1) {
+                    break;
+                }
                 var result2 = future2.get();
                 var mvX = result1.get("x") - result2.get("x");
                 var mvY = result1.get("y") - result2.get("y");
@@ -143,13 +148,13 @@ public class BaseHandler<T extends BaseHandler<T>> {
      * 
      * @return
      */
-    public T clickReward() {
+    public T clickReward(int model) {
         try {
             var preSecond = System.currentTimeMillis();
             Map<String, Integer> reward1 = null;
             while (true) {
                 // 超时判断
-                if (System.currentTimeMillis() - preSecond >= 60000) {
+                if (System.currentTimeMillis() - preSecond >= (model == 1 ? 60000 : 180000)) {
                     break;
                 }
                 ADBUtil.screenShot();

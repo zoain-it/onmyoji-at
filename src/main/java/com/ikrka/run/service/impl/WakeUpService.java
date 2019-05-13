@@ -23,9 +23,9 @@ public class WakeUpService extends Thread implements BaseService {
     @Override
     public void run() {
         getHandlerInstance().enterExplore().sleep(2000).enterWakeUp().sleep(500).enterModel(model).sleep(500)
-                .selectTier(tier).sleep(500);
+                .selectTier(tier, 1).sleep(500);
         while (true) {
-            getHandlerInstance().enterGauntlet().sleep(2000).clickPrepare().sleep(10000).clickReward();
+            getHandlerInstance().enterGauntlet(1).sleep(2000).clickPrepare().sleep(10000).clickReward(1);
         }
     }
 

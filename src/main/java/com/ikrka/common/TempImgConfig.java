@@ -33,6 +33,9 @@ public class TempImgConfig {
     // 八岐大蛇按钮
     public final static String[] GOSSIP_SNAKE = { Config.tempPath + "0E70A930-55E0-4383-BD78-E73A36C9DF2E.png" };
 
+    // 业原火
+    public final static String[] FIRE = { Config.tempPath + "F2724FDC-60ED-4F8B-9030-30BABF220D6C.png" };
+
     // 御魂挑战按钮
     public final static String[] GAUNTLET = { Config.tempPath + "557FABF5-7CD0-45E9-8164-FF02981A53E8.png" };
 
@@ -42,6 +45,11 @@ public class TempImgConfig {
 
     // 探险按钮
     public final static String[] EXPLORE = { Config.tempPath + "7D3B7698-C5D9-4720-A699-3DE1B11C2B0C.png" };
+
+    // 业原火关卡
+    public final static String[] FIRE_MODEL = { Config.tempPath + "24D1E52E-76FB-41E0-A366-253EDB754236.png",
+            Config.tempPath + "79FCE003-FC1E-44CC-B795-9BCCAF31C3DE.png",
+            Config.tempPath + "4095EC27-4688-4D77-A3F1-7E498D517EC0.png" };
 
     // 御魂层级按钮
     public final static String[] SOUL_COORDINATE = { Config.tempPath + "D0048FE3-0FCD-47F5-8E15-6840156D29A5.png",

@@ -29,6 +29,10 @@ public class Config {
 
     public final static String[] GAUNTLET_PARAM = { "一层", "二层", "三层", "四层", "五层", "六层", "七层", "八层", "九层", "十层", "悲鸣" };
 
+    public final static String[] SOUL_MODEL_PARAM = { "八岐大蛇", "业原火" };
+
+    public final static String[] FIRE_MODEL_PARAM = { "贪之阵", "嗔之阵", "痴之阵" };
+
     public final static String[] MODEL_PARAM = { "火麒麟", "风麒麟", "水麒麟", "雷麒麟" };
 
     public static void init(String configPath) {

@@ -2,6 +2,33 @@ package com.ikrka.util;
 
 public class StringUtil {
 
+    public static int fireModelToInt(String str) {
+        int result = 1;
+        switch (str) {
+        case "嗔之阵":
+            result = 2;
+            break;
+        case "痴之阵":
+            result = 3;
+            break;
+        default:
+            break;
+        }
+        return result;
+    }
+
+    public static int soulModelToInt(String str) {
+        int result = 1;
+        switch (str) {
+        case "业原火":
+            result = 2;
+            break;
+        default:
+            break;
+        }
+        return result;
+    }
+
     public static int tierToInt(String str) {
         int result = 1;
         switch (str) {

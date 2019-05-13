@@ -20,7 +20,7 @@ public class ADBUtil {
 
     static {
         try {
-            ExecUtil.getInstance().exec(Config.adb + " kill-server");
+            ExecUtil.getInstance().exec(Config.adb + " devices");
         } catch (Exception e) {
             e.printStackTrace();
         }

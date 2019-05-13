@@ -81,11 +81,19 @@ public class IndexUi {
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
             if (command.equals("gauntlet")) {
-                String tier = (String) JOptionPane.showInputDialog(null, "请选择层数:\n", "层数", JOptionPane.QUESTION_MESSAGE,
-                        null, Config.GAUNTLET_PARAM, Config.GAUNTLET_PARAM[0]);
+                String model = (String) JOptionPane.showInputDialog(null, "请选择模式:\n", "模式",
+                        JOptionPane.QUESTION_MESSAGE, null, Config.SOUL_MODEL_PARAM, Config.SOUL_MODEL_PARAM[0]);
+                String[] param = Config.SOUL_MODEL_PARAM[0].equals(model) ? Config.GAUNTLET_PARAM
+                        : Config.FIRE_MODEL_PARAM;
+                String title = Config.SOUL_MODEL_PARAM[0].equals(model) ? "层数" : "关卡";
+                String tier = (String) JOptionPane.showInputDialog(null, "请选择" + title + ":\n", title,
+                        JOptionPane.QUESTION_MESSAGE, null, param, param[0]);
+                int modelInt = StringUtil.soulModelToInt(model);
                 if (tier != null && !"".equals(tier)) {
                     statusLabel.setText("runing gauntlet.");
-                    SoulService soulService = new SoulService(StringUtil.tierToInt(tier));
+                    SoulService soulService = new SoulService(
+                            modelInt == 1 ? StringUtil.soulModelToInt(tier) : StringUtil.fireModelToInt(tier),
+                            modelInt);
                     soulService.setName("soulService");
                     soulService.setDaemon(true);
                     ThreadUtil.execute(soulService);
