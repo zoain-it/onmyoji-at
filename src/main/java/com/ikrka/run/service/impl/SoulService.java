@@ -33,7 +33,7 @@ public class SoulService extends Thread implements BaseService {
         getHandlerInstance().enterExplore().sleep(2000).enterSoul().sleep(1000).enterSoulModel(model).sleep(1000)
                 .selectTier(tier, model).sleep(500);
         while (true) {
-            getHandlerInstance().enterGauntlet(model).sleep(2000).clickPrepare().sleep(65000).clickReward(model);
+            getHandlerInstance().enterGauntlet(model).sleep(2000).clickPrepare().sleep(15000).clickReward(model);
         }
     }
 

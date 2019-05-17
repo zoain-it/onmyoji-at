@@ -14,7 +14,7 @@ public class TempImgConfig {
     // 奖励
     public final static String[] REWARD = { Config.tempPath + "D46E730A-B314-407D-A9F5-A447EE883834.png",
             Config.tempPath + "D771B1FB-8FA0-40FB-84EA-EF93818013D9.png" };
-    public final static Integer[] REWARD_LIMIT = { -516, -512, -454, -450 };
+    public final static Integer[] REWARD_LIMIT = { -517, -513, -455, -451 };
 
     // 准备
     public final static String[] PREPARE = { Config.tempPath + "2AD6310B-3A29-4D07-AFE6-FEFF13EE4D0D.png",
