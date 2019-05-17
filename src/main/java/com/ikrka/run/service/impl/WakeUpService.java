@@ -11,13 +11,13 @@ import com.ikrka.run.service.base.BaseService;
  */
 public class WakeUpService extends Thread implements BaseService {
 
-    private Integer model;
-
     private Integer tier;
 
-    public WakeUpService(Integer model, Integer tier) {
-        this.model = model;
+    private Integer model;
+
+    public WakeUpService(Integer tier, Integer model) {
         this.tier = tier;
+        this.model = model;
     }
 
     @Override

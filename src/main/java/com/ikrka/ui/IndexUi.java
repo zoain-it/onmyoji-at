@@ -92,8 +92,7 @@ public class IndexUi {
                 if (tier != null && !"".equals(tier)) {
                     statusLabel.setText("runing gauntlet.");
                     SoulService soulService = new SoulService(
-                            modelInt == 1 ? StringUtil.soulModelToInt(tier) : StringUtil.fireModelToInt(tier),
-                            modelInt);
+                            (modelInt == 1 ? StringUtil.tierToInt(tier) : StringUtil.fireModelToInt(tier)), modelInt);
                     soulService.setName("soulService");
                     soulService.setDaemon(true);
                     ThreadUtil.execute(soulService);
@@ -105,8 +104,8 @@ public class IndexUi {
                         null, Config.GAUNTLET_PARAM, Config.GAUNTLET_PARAM[0]);
                 if (model != null && !"".equals(model) && tier != null && !"".equals(tier)) {
                     statusLabel.setText("runing wakeUp.");
-                    WakeUpService wakeUpService = new WakeUpService(StringUtil.wakeUpModelToInt(model),
-                            StringUtil.tierToInt(tier));
+                    WakeUpService wakeUpService = new WakeUpService(StringUtil.tierToInt(tier),
+                            StringUtil.wakeUpModelToInt(model));
                     wakeUpService.setName("wakeUpService");
                     wakeUpService.setDaemon(true);
                     ThreadUtil.execute(wakeUpService);
