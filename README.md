@@ -17,9 +17,13 @@
     java -jar target/onmyoji-at-1.0-SNAPSHOT-jar-with-dependencies.jar -l /User/onmyoji/libopencv_java410.dylib -a /usr/bin/adb -t /User/onmyoji/temp/
 
 > 参数说明 ：<br>
+
     -l // opencv驱动 （必须。Windows为dll，MAC为dylib）
+
     -a // adb工具 （若已加入环境变量可不设置）
+
     -t // 模板图路径 （必须）
+
 交流QQ群 ：996806566
 
 版权声明本软件及代码仅供学习参考不得进行任何商业用途否则产生的一切后果将由使用者本人承担。
